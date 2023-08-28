@@ -31,7 +31,7 @@ export default function ToDoItem(props) {
 				<input
 					checked={checkedState}
 					type="checkbox"
-					className="h-4 w-4 bg-gray-100"
+					className="h-8 w-8 pt-6 bg-gray-100"
 					onClick={stateChangeHandler}
 					onChange={updateItem}
 				></input>

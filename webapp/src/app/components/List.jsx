@@ -7,7 +7,7 @@ export default function List(props){
     console.log("re-rendering List");
     return (
         <div className="container">
-            <ul className='flex flex-col items-end w-6/12 ml-60'>
+            <ul className='flex flex-col items-end w-6/12 ml-20'>
                 {toDos.map((item) => {
                     return <ToDoItem key={item.id} item={item} updateToDo={updateToDo} updateItems={updateItems}/>
                 })}

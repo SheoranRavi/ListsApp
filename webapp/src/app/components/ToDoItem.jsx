@@ -27,7 +27,7 @@ export default function ToDoItem(props) {
 
 	return (
 		<>
-			<div className="flex space-x-5 w-10/12 justify-between items-start">
+			<div className="flex space-x-5 w-10/12 justify-between items-center border">
 				<input
 					checked={checkedState}
 					type="checkbox"
@@ -37,7 +37,7 @@ export default function ToDoItem(props) {
 				></input>
 				<div className="flex space-x-4 w-full justify-start">{item.text}</div>
 				<div
-					className="cursor-pointer text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-small rounded-lg text-sm px-5 py-2 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+					className="cursor-pointer bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
 					onClick={removeItem}
 				>
 					X

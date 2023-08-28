@@ -35,7 +35,7 @@ export default function ToDoItem(props) {
 					onClick={stateChangeHandler}
 					onChange={updateItem}
 				></input>
-				<div className="flex space-x-4 justify-end">{item.text}</div>
+				<div className="flex space-x-4 w-full justify-start">{item.text}</div>
 				<div
 					className="cursor-pointer text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-small rounded-lg text-sm px-5 py-2 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
 					onClick={removeItem}

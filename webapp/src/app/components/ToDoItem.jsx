@@ -27,7 +27,9 @@ export default function ToDoItem(props) {
 
 	return (
 		<>
-			<div className="flex space-x-5 w-10/12 p-2 justify-between items-center border rounded-lg drop-shadow">
+			<div className="flex space-x-5 w-10/12 p-2 justify-between 
+            items-center border rounded-lg drop-shadow"
+            draggable={true}>
 				<input
 					checked={checkedState}
 					type="checkbox"

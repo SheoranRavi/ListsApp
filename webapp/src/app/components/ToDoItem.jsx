@@ -30,6 +30,7 @@ export default function ToDoItem(props) {
 
 	const updateItem = (e) => {
 		console.log("checkbox state changed");
+        setTimeout(updateItems, 1000);
 	};
 
 	const removeItem = (e) => {

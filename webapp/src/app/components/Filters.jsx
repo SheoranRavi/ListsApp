@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import toDoStates from "../common/toDoStates";
 export default function Filters(props) {
-    const [filterState, setFilter] = useState(toDoStates.all);
 	const filters = [
 		{
 			id: 1,
@@ -17,14 +16,13 @@ export default function Filters(props) {
 		},
 	];
 
-	const selectFilterCallback = props.selectFilterCallback;
+    const setFilter = props.setFilter;
     console.log('re-rendering Filters component');
 
     const filterSelectedAction = (e) => {
         let filterName = e.target.id;
         console.log('Filter selected: ', filterName);
         setFilter(filterName);
-        selectFilterCallback(filterName);
     }
 
 	return (

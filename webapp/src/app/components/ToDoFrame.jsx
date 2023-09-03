@@ -6,29 +6,26 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import getToDoItems from '../common/getToDoItems';
 import getToDoItemsByFilter from '../common/getToDoItemsByFilter';
+import toDoStates from '../common/toDoStates';
 
 export default function ToDoFrame(){
     const [toDoItems, setToDoItems] = useState([]);
+    const [filterState, setFilter] = useState(toDoStates.all);
     console.log('re-rendering ToDoFrame');
 
     const handleToDoItemsUpdate = () => {
-        setToDoItems(getToDoItems);
-    }
-
-    const filterCallback = (filter) => {
-        let items = getToDoItemsByFilter(filter);
-        setToDoItems(items);
+        setToDoItems(getToDoItemsByFilter(filterState));
     }
 
     useEffect(() => {
-        setToDoItems(getToDoItems());
-    }, [])
+        setToDoItems(getToDoItemsByFilter(filterState));
+    }, [filterState])
 
     return (
         <>
             <NewToDo addToDo={addToDo} handleItemsUpdate={handleToDoItemsUpdate}/>
             <List list={toDoItems} updateItems={handleToDoItemsUpdate}></List>
-            <Filters selectFilterCallback={filterCallback}></Filters>
+            <Filters setFilter={setFilter}></Filters>
         </>
     )
 }

@@ -3,10 +3,6 @@ import toDoStates from "../common/toDoStates";
 export default function Filters(props) {
 	const filters = [
 		{
-			id: 1,
-			name: toDoStates.all,
-		},
-		{
 			id: 2,
 			name: toDoStates.active,
 		},

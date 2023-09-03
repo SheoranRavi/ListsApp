@@ -10,7 +10,7 @@ import toDoStates from '../common/toDoStates';
 
 export default function ToDoFrame(){
     const [toDoItems, setToDoItems] = useState([]);
-    const [filterState, setFilter] = useState(toDoStates.all);
+    const [filterState, setFilter] = useState(toDoStates.active);
     console.log('re-rendering ToDoFrame');
 
     const handleToDoItemsUpdate = () => {

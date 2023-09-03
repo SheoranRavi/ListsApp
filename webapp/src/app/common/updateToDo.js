@@ -6,5 +6,6 @@ export default function updateToDo(item){
         return;
     currentToDos[itemIdx].checkedState = item.checkedState;
     currentToDos[itemIdx].text = item.text;
+    currentToDos[itemIdx].state = item.state;
     localStorage.setItem('toDosList', JSON.stringify(currentToDos));
 }

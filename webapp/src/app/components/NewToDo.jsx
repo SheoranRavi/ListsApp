@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toDoStates from "../common/toDoStates";
 
 export default function NewToDo(props) {
 	// do form validation
@@ -17,6 +18,7 @@ export default function NewToDo(props) {
 		newItem.text = formData.get("toDoItem");
 		newItem.id = crypto.randomUUID();
 		newItem.checkedState = false;
+        newItem.state = toDoStates.active;
 		addToDo(newItem);
 		handleItemsUpdate();
 	};
@@ -53,7 +55,7 @@ export default function NewToDo(props) {
 			{
 				<div className="h-0.5 text-xs">
 					{showError && (
-						<div class="flex justify-center text-red-700">
+						<div className="flex justify-center text-red-700">
 							ToDo needs to be at least 3 letters long.
 						</div>
 					)}

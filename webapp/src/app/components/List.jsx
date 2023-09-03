@@ -6,7 +6,7 @@ export default function List(props){
     const updateItems = props.updateItems;
     console.log("re-rendering List");
     return (
-        <div className="container">
+        <div className="block h-[400px] overflow-scroll">
             <ul className='flex flex-col-reverse items-center w-full'>
                 {toDos.map((item) => {
                     return <ToDoItem key={item.id} item={item} updateToDo={updateToDo} updateItems={updateItems}/>

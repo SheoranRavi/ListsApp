@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toDoStates from "../common/toDoStates";
 import deleteToDoById from "../common/deleteToDoById";
 
 export default function ToDoItem(props) {
@@ -12,6 +13,17 @@ export default function ToDoItem(props) {
 		console.log("onChange for checkbox fired");
 		const newCheckedState = !checkedState;
 		item.checkedState = newCheckedState;
+        
+        // set item state
+        if(item.checkedState === true){
+            console.log('setting item state completed')
+            item.state = toDoStates.completed;
+        }
+        else if(item.checkedState === false){
+            console.log('setting item state active')
+            item.state = toDoStates.active;
+        }
+
 		updateToDo(item);
 		setCheckedState(newCheckedState);
 	};

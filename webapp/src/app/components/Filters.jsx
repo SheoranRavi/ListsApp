@@ -29,15 +29,15 @@ export default function Filters(props) {
 	return (
 		<>
 			<div className="flex justify-center pb-2">
-				<div className="grid grid-cols-[1fr_2fr_1fr]">
+				<div className="grid grid-cols-[1fr_3fr_1fr] w-full">
                     <div></div>
-					<ul className="mx-6 inline-block bg-blue-300 rounded-lg">
+					<ul className="mx-6 inline-block bg-white-600 rounded-lg justify-self-center">
 						{filters.map((item) => {
 							return (
 								<div
 									key={item.id}
 									id={item.name}
-									className="px-4 py-2 active:bg-gray-600 active:text-blue-200  rounded-lg cursor-pointer inline-block hover:bg-gray-200 hover:text-gray-600"
+									className="px-4 py-2 bg-sky-300 active:bg-gray-600 active:text-blue-200  rounded-lg cursor-pointer inline-block hover:bg-gray-200 hover:text-gray-600 shadow-md shadow-black"
 								>
 									<li
 										id={item.name}

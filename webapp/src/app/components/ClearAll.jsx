@@ -12,7 +12,7 @@ export default function ClearAll(props){
     return (
         <>
             <button
-                className="inline w-1/2 rounded-lg bg-gray-300 hover:bg-gray-400 active:bg-gray-500 justify-self-end border-2 border-indigo-600 shadow-lg shadow-black"
+                className="inline w-3/4 rounded-lg bg-gray-300 hover:bg-gray-400 active:bg-gray-500 justify-self-end border-2 border-indigo-600 shadow-lg shadow-black"
                 onClick={handleClick}
             >
                 Clear All

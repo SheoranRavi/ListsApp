@@ -29,7 +29,7 @@ export default function Filters(props) {
 	return (
 		<>
 			<div className="flex justify-center pb-2">
-				<div className="grid grid-cols-3">
+				<div className="grid grid-cols-[1fr_2fr_1fr]">
                     <div></div>
 					<ul className="mx-6 inline-block bg-blue-300 rounded-lg">
 						{filters.map((item) => {

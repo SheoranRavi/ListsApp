@@ -4,7 +4,6 @@ import addToDo from '../common/addToDo';
 import Filters from './Filters';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import getToDoItems from '../common/getToDoItems';
 import getToDoItemsByFilter from '../common/getToDoItemsByFilter';
 import toDoStates from '../common/toDoStates';
 
@@ -25,7 +24,7 @@ export default function ToDoFrame(){
         <>
             <NewToDo addToDo={addToDo} handleItemsUpdate={handleToDoItemsUpdate}/>
             <List list={toDoItems} updateItems={handleToDoItemsUpdate}></List>
-            <Filters setFilter={setFilter}></Filters>
+            <Filters setFilter={setFilter} filterState={filterState} updateItems={handleToDoItemsUpdate}></Filters>
         </>
     )
 }

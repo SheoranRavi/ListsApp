@@ -39,7 +39,7 @@ export default function Filters(props) {
 									id={item.name}
 									className={`bg-sky-300
                                     rounded-lg cursor-pointer inline-block 
-                                    hover:text-gray-800 shadow-md shadow-black
+                                    hover:text-gray-800 shadow-md shadow-gray-500
                                     ${filterState === item.name ? 'border-blue-900 border-b-4 border-l-2 border-r-2' : ''}`}
 								>
 									<li

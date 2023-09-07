@@ -1,6 +1,5 @@
 import { useState } from "react";
 import toDoStates from "../common/toDoStates";
-import deleteToDoById from "../common/deleteToDoById";
 
 export default function ToDoItem(props) {
 	console.log("re-rendering ToDoItem");
@@ -33,11 +32,6 @@ export default function ToDoItem(props) {
         setTimeout(updateItems, 1000);
 	};
 
-	const removeItem = (e) => {
-		deleteToDoById(item.id);
-		updateItems();
-	};
-
 	return (
 		<>
 			<div className="flex space-x-5 w-10/12 p-2 justify-between 
@@ -51,12 +45,6 @@ export default function ToDoItem(props) {
 					onChange={updateItem}
 				></input>
 				<div className="flex space-x-4 w-full justify-start">{item.text}</div>
-				<div
-					className="cursor-pointer rounded-lg bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
-					onClick={removeItem}
-				>
-					X
-				</div>
 			</div>
 		</>
 	);

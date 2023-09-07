@@ -38,8 +38,8 @@ export default function Filters(props) {
 									key={item.id}
 									id={item.name}
 									className={`bg-sky-300 active:bg-gray-600 active:text-blue-200 
-                                    rounded-lg cursor-pointer inline-block hover:bg-gray-200 
-                                    hover:text-gray-600 shadow-md shadow-black
+                                    rounded-lg cursor-pointer inline-block 
+                                    hover:text-gray-800 shadow-md shadow-black
                                     ${filterState === item.name ? 'border-blue-900 border-b-4 border-l-2 border-r-2' : ''}`}
 								>
 									<li

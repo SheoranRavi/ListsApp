@@ -28,7 +28,7 @@ export default function Filters(props) {
 
 	return (
 		<>
-			<div className="flex justify-center pb-2">
+			<div className="flex justify-center pb-2 pt-2">
 				<div className="grid grid-cols-[1fr_3fr_1fr] w-full">
                     <div></div>
 					<ul className="mx-6 flex space-x-1 bg-white-600 rounded-lg justify-self-center">

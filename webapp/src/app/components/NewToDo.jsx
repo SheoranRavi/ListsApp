@@ -32,7 +32,7 @@ export default function NewToDo(props) {
 	};
 
 	return (
-		<div className="flex flex-col grow justify-center w-half pb-8">
+		<div className="flex flex-col grow justify-center w-half pb-4">
 			<form
 				onSubmit={handleSubmit}
 				className="flex justify-center bg-white shadow-md rounded-lg pt-2 pb-2 mb-2"

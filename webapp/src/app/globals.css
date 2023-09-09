@@ -25,12 +25,10 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: Georgia;
+  background-image: repeating-linear-gradient(45deg, lightcyan, lightslategrey 4px);
+  background-size: 1px 1px;
+  background-color: lightseagreen;
 }
 
 .no-scrollbar::-webkit-scrollbar {

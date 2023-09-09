@@ -32,14 +32,14 @@ export default function NewToDo(props) {
 	};
 
 	return (
-		<div className="flex flex-col grow justify-center w-half pb-4">
+		<div className="flex flex-col grow justify-center items-center pb-4 pt-2">
 			<form
 				onSubmit={handleSubmit}
-				className="flex justify-center bg-white shadow-md rounded-lg pt-2 pb-2 mb-2"
+				className="flex justify-center min-w-0 min-h-0 bg-inherit shadow-md rounded-lg mb-1"
 			>
 				<input
 					id="newNote"
-					className="block border border-slate-300 rounded-md drop-shadow-lg py-2 pl-2 pr-3 focus:outline-none focus:border-sky-500 focus:ring-1 sm:text-sm focus:ring-sky-500"
+					className="block border border-slate-300 rounded-md box-shadow-lg py-2 pl-2 pr-3 mr-2 focus:outline-none focus:border-sky-500 focus:ring-1 sm:text-sm focus:ring-sky-500"
 					type="text"
 					name="toDoItem"
 					placeholder="Enter To Do Item"
@@ -53,7 +53,7 @@ export default function NewToDo(props) {
 				</button>
 			</form>
 			{
-				<div className="h-0.5 text-xs">
+				<div className="h-0.5 text-xs mb-2">
 					{showError && (
 						<div className="flex justify-center text-red-700">
 							ToDo needs to be at least 3 letters long.

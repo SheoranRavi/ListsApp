@@ -28,7 +28,7 @@ export default function Filters(props) {
 
 	return (
 		<>
-			<div className="flex justify-center pb-2 pt-2">
+			<div className="flex justify-center pb-2 pt-2 mt-2">
 				<div className="grid grid-cols-[1fr_3fr_1fr] w-full">
                     <div></div>
 					<ul className="mx-6 flex space-x-1 bg-white-600 rounded-lg justify-self-center">
@@ -37,9 +37,9 @@ export default function Filters(props) {
 								<div
 									key={item.id}
 									id={item.name}
-									className={`bg-sky-300
+									className={`bg-sky-400
                                     rounded-lg cursor-pointer inline-block 
-                                    hover:text-gray-800 shadow-md shadow-gray-500
+                                    hover:text-gray-800 shadow-lg shadow-gray-600
                                     ${filterState === item.name ? 'border-blue-900 border-b-4 border-l-2 border-r-2' : ''}`}
 								>
 									<li

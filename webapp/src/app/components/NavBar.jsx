@@ -1,12 +1,17 @@
-import { useState } from "react";
+'use client'
+
+import { useEffect, useState } from "react";
+import { useCallback } from "react";
 import NavBarItem from "./NavBarItem";
 import storeCategories from "../common/storeCategories";
 import getListCategories from "../common/getListCategories";
 
 export default function Navbar(props) {
-    const listCategories = getListCategories();
+    //const listCategories = getListCategories();
+    var listCategories;
 
-	const extractCategories = () => {
+	const extractCategories = useCallback(() => {
+        listCategories = getListCategories();
 		let tempCategories = [];
 		let i = 1;
 		for (const cat in listCategories) {
@@ -17,9 +22,9 @@ export default function Navbar(props) {
 			i++;
 		}
 		return tempCategories;
-	};
+	}, [listCategories]);
 
-	const [categories, setCategories] = useState(extractCategories);
+	const [categories, setCategories] = useState([]);
 	const [newListName, setNewListName] = useState("");
 
 	const currentCategory = props.currentCategory;
@@ -57,6 +62,11 @@ export default function Navbar(props) {
 		let text = e.target.value;
 		setNewListName(text);
 	};
+
+    useEffect(() => {
+        var cats = extractCategories();
+        setCategories(cats);
+    }, [extractCategories])
 
 	return (
 		<>

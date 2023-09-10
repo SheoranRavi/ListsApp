@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useCallback } from "react";
 import NavBarItem from "./NavBarItem";
 import storeCategories from "../common/storeCategories";
@@ -8,21 +8,21 @@ import getListCategories from "../common/getListCategories";
 
 export default function Navbar(props) {
     //const listCategories = getListCategories();
-    var listCategories;
+    const listCategoriesRef = useRef([]);
 
 	const extractCategories = useCallback(() => {
-        listCategories = getListCategories();
+        listCategoriesRef.current = getListCategories();
 		let tempCategories = [];
 		let i = 1;
-		for (const cat in listCategories) {
+		for (const cat in listCategoriesRef.current) {
 			tempCategories.push({
 				key: i,
-				name: listCategories[cat],
+				name: listCategoriesRef.current[cat],
 			});
 			i++;
 		}
 		return tempCategories;
-	}, [listCategories]);
+	}, [listCategoriesRef]);
 
 	const [categories, setCategories] = useState([]);
 	const [newListName, setNewListName] = useState("");
@@ -46,15 +46,15 @@ export default function Navbar(props) {
 		const formData = new FormData(form);
 		e.target.reset();
 		setNewListName("");
-		let newList = formData.get("newList");
+		let newList = formData.get("newList").trim();
 		if (newList === "" || newList.length === 0) return;
 		// check if this category already exists
-		if (newList in listCategories) {
+		if (newList in listCategoriesRef.current) {
 			alert("This list already exists");
 			return;
 		}
-		listCategories[newList] = newList;
-        storeCategories(listCategories);
+		listCategoriesRef.current[newList] = newList;
+        storeCategories(listCategoriesRef.current);
 		setCategories(extractCategories);
 	};
 

@@ -14,9 +14,7 @@ export default function Filters(props) {
 		},
 	];
 
-	const filterState = props.filterState;
-	const setFilter = props.setFilter;
-	const updateItems = props.updateItems;
+	const {filterState, setFilter, updateItems, currentCategory} = props;
 
 	console.log("re-rendering Filters component");
 
@@ -55,7 +53,7 @@ export default function Filters(props) {
 						})}
 					</ul>
 					{filterState === toDoStates.completed && (
-						<ClearAll updateItems={updateItems} />
+						<ClearAll updateItems={updateItems} currentCategory={currentCategory}/>
 					)}
 				</div>
 			</div>

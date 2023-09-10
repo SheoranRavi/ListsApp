@@ -4,27 +4,41 @@ import addToDo from '../common/addToDo';
 import Filters from './Filters';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import getToDoItemsByFilter from '../common/getToDoItemsByFilter';
+import filterItemsByState from '../common/filterItemsByState';
 import toDoStates from '../common/toDoStates';
+import getItemsByCategory from '../common/getItemsByCategory';
+import listCategories from '../common/listCategories';
+import Navbar from './NavBar';
 
 export default function ToDoFrame(){
-    const [toDoItems, setToDoItems] = useState([]);
-    const [filterState, setFilter] = useState(toDoStates.active);
+
     console.log('re-rendering ToDoFrame');
 
+    const [filterState, setFilter] = useState(toDoStates.active);
+    const [currentCategory, setCategory] = useState(listCategories.default);
+    const [stateFilteredItems, setStateFilteredItems] = useState([]);
+
     const handleToDoItemsUpdate = () => {
-        setToDoItems(getToDoItemsByFilter(filterState));
+        let allItems = getItemsByCategory(currentCategory);
+        let filteredItems = filterItemsByState(allItems, filterState);
+        setStateFilteredItems(filteredItems);
     }
 
     useEffect(() => {
-        setToDoItems(getToDoItemsByFilter(filterState));
-    }, [filterState])
+        let allItems = getItemsByCategory(currentCategory);
+        let filteredItems = filterItemsByState(allItems, filterState);
+        setStateFilteredItems(filteredItems);
+    }, [filterState, currentCategory])
 
     return (
         <>
-            <NewToDo addToDo={addToDo} handleItemsUpdate={handleToDoItemsUpdate}/>
-            <List list={toDoItems} updateItems={handleToDoItemsUpdate}></List>
-            <Filters setFilter={setFilter} filterState={filterState} updateItems={handleToDoItemsUpdate}></Filters>
+            <Navbar currentCategory={currentCategory} setCategory={setCategory}></Navbar>
+            <NewToDo addToDo={addToDo} handleItemsUpdate={handleToDoItemsUpdate} currentCategory={currentCategory}/>
+            <List list={stateFilteredItems} updateItems={handleToDoItemsUpdate}></List>
+            <Filters setFilter={setFilter} 
+                    filterState={filterState} 
+                    updateItems={handleToDoItemsUpdate}
+                    currentCategory={currentCategory}></Filters>
         </>
     )
 }

@@ -2,11 +2,12 @@ import React from "react";
 import clearCompleted from "../common/clearCompleted";
 export default function ClearAll(props){
 
-    const updateItems = props.updateItems;
+    const {updateItems, currentCategory} = props;
 
     const handleClick = (e) => {
         console.log("Clear All");
-        clearCompleted();
+        
+        clearCompleted(currentCategory);
         updateItems();
     }
     return (

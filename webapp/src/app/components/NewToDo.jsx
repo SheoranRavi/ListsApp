@@ -4,8 +4,8 @@ import toDoStates from "../common/toDoStates";
 export default function NewToDo(props) {
 	// do form validation
 	// if all good save the item to localStorage
-	const addToDo = props.addToDo;
-	const handleItemsUpdate = props.handleItemsUpdate;
+	const {addToDo, handleItemsUpdate, currentCategory} = props;
+    
 	const [toDoText, setToDoText] = useState("");
 	const [showError, setShowError] = useState(false);
 	const handleSubmit = (e) => {
@@ -19,6 +19,7 @@ export default function NewToDo(props) {
 		newItem.id = crypto.randomUUID();
 		newItem.checkedState = false;
         newItem.state = toDoStates.active;
+        newItem.category = currentCategory;
 		addToDo(newItem);
 		handleItemsUpdate();
 	};

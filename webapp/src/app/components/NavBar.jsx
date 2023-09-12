@@ -40,6 +40,13 @@ export default function Navbar(props) {
 		}
 	};
 
+    const onDeleteListSetDefault = () => {
+        var categories = getListCategories();
+        setCategory(categories.default);
+        let cat = extractCategories();
+        setCategories(cat);
+    }
+
 	const addCategory = (e) => {
 		e.preventDefault();
 		let form = e.target;
@@ -56,6 +63,7 @@ export default function Navbar(props) {
 		listCategoriesRef.current[newList] = newList;
         storeCategories(listCategoriesRef.current);
 		setCategories(extractCategories);
+        setCategory(newList);
 	};
 
 	const updateNewListName = (e) => {
@@ -79,6 +87,7 @@ export default function Navbar(props) {
 								name={item.name}
 								onSelect={onSelect}
                                 currentCategory={currentCategory}
+                                onDeleteListSetDefault={onDeleteListSetDefault}
 							></NavBarItem>
 						);
 					})}

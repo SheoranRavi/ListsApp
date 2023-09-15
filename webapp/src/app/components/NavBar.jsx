@@ -5,6 +5,7 @@ import { useCallback } from "react";
 import NavBarItem from "./NavBarItem";
 import storeCategories from "../common/storeCategories";
 import getListCategories from "../common/getListCategories";
+import AddNewList from "./AddNewList";
 
 export default function Navbar(props) {
     //const listCategories = getListCategories();
@@ -26,6 +27,7 @@ export default function Navbar(props) {
 
 	const [categories, setCategories] = useState([]);
 	const [newListName, setNewListName] = useState("");
+	const [showAddList, setShowAddList] = useState(false);
 
 	const currentCategory = props.currentCategory;
 	const setCategory = props.setCategory;
@@ -64,12 +66,17 @@ export default function Navbar(props) {
         storeCategories(listCategoriesRef.current);
 		setCategories(extractCategories);
         setCategory(newList);
+		setShowAddList(false);
 	};
 
 	const updateNewListName = (e) => {
 		let text = e.target.value;
 		setNewListName(text);
 	};
+
+	const handleAddListClose = () => {
+		setShowAddList(false);
+	}
 
     useEffect(() => {
         var cats = extractCategories();
@@ -96,15 +103,26 @@ export default function Navbar(props) {
 					className="flex ml-1 justify-self-end mt-1"
 					onSubmit={addCategory}
 				>
-					<input
-						className="flex text-xs px-2 rounded-md shadow-md shadow-gray-400"
+					{/* <input
+						className="flex text-xs px-2 rounded-md shadow-md shadow-gray-400 border
+                                    focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
 						type="text"
 						placeholder="New List"
 						value={newListName}
 						name="newList"
 						onChange={updateNewListName}
-					></input>
-					<button className="bg-cyan-500 text-xl px-4 font-bold shadow-sm shadow-gray-500 rounded-lg">
+					></input> */}
+					{
+						showAddList &&
+						<AddNewList
+							addCategory={addCategory}
+							updateNewListName={updateNewListName}
+							newListName={newListName}
+							handleAddListClose={handleAddListClose}
+						/>
+					}
+					<button className="bg-cyan-500 text-xl px-4 font-bold shadow-md shadow-gray-600 rounded-lg"
+							onClick={() => setShowAddList(true)}>
 						&#43;
 					</button>
 				</form>

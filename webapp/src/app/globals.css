@@ -47,7 +47,7 @@ body {
   }
 
   .cancel-btn{
-    @apply rounded-md p-2 bg-white text-slate-700 cursor-pointer shadow shadow-gray-600 border border-2 border-neutral-400
+    @apply rounded-md p-2 bg-white text-slate-700 cursor-pointer shadow shadow-gray-600 border border-2 border-neutral-200
   }
 
   .nav-bar-item{

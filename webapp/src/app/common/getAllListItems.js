@@ -1,4 +1,4 @@
-export default function getToDoItems(){
+export default function getAllListItems(){
     let items = JSON.parse(localStorage.getItem('toDosList'));
     if(!items || !Array.isArray(items)){
         return [];

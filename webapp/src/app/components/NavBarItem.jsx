@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import ListDeleteEditPopup from "./ListDeleteEditPopup";
+import ListDeletePopup from "./ListDeletePopup";
 import deleteList from "../common/deleteList";
 
 export default function NavBarItem(props){
@@ -41,7 +41,7 @@ export default function NavBarItem(props){
             </div>
             {
                 showDeletePopup &&
-                <ListDeleteEditPopup 
+                <ListDeletePopup 
                     listName={name}
                     deleteList={handleListDelete}
                     cancelDelete={cancelDelete}    

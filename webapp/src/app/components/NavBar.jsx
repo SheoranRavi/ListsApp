@@ -43,11 +43,18 @@ export default function Navbar(props) {
 	};
 
     const onDeleteListSetDefault = () => {
-        var categories = getListCategories();
-        setCategory(categories.default);
+        setFirstAsDefault();
+    }
+
+	const setFirstAsDefault = () => {
+		var categories = getListCategories();
+		for(var prop in categories){
+			setCategory(categories[prop]);
+			break;
+		}
         let cat = extractCategories();
         setCategories(cat);
-    }
+	}
 
 	const addCategory = (e) => {
 		e.preventDefault();
@@ -81,7 +88,9 @@ export default function Navbar(props) {
     useEffect(() => {
         var cats = extractCategories();
         setCategories(cats);
-    }, [extractCategories])
+		if(cats.length > 0)
+			setCategory(cats[0].name);
+    }, [extractCategories, setCategory])
 
 	return (
 		<>
@@ -93,39 +102,26 @@ export default function Navbar(props) {
 								key={item.key}
 								name={item.name}
 								onSelect={onSelect}
-                                currentCategory={currentCategory}
-                                onDeleteListSetDefault={onDeleteListSetDefault}
+								currentCategory={currentCategory}
+								onDeleteListSetDefault={onDeleteListSetDefault}
 							></NavBarItem>
 						);
 					})}
 				</ul>
-				<form
-					className="flex ml-1 justify-self-end mt-1"
-					onSubmit={addCategory}
+				{showAddList && (
+					<AddNewList
+						addCategory={addCategory}
+						updateNewListName={updateNewListName}
+						newListName={newListName}
+						handleAddListClose={handleAddListClose}
+					/>
+				)}
+				<button
+					className="bg-cyan-500 text-xl max-w-fit py-2 px-3 mr-1 justify-self-end self-center font-bold shadow-md shadow-gray-600 rounded-lg"
+					onClick={() => setShowAddList(true)}
 				>
-					{/* <input
-						className="flex text-xs px-2 rounded-md shadow-md shadow-gray-400 border
-                                    focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1"
-						type="text"
-						placeholder="New List"
-						value={newListName}
-						name="newList"
-						onChange={updateNewListName}
-					></input> */}
-					{
-						showAddList &&
-						<AddNewList
-							addCategory={addCategory}
-							updateNewListName={updateNewListName}
-							newListName={newListName}
-							handleAddListClose={handleAddListClose}
-						/>
-					}
-					<button className="bg-cyan-500 text-xl px-4 font-bold shadow-md shadow-gray-600 rounded-lg"
-							onClick={() => setShowAddList(true)}>
-						&#43;
-					</button>
-				</form>
+					<big>&#43;</big>
+				</button>
 			</div>
 		</>
 	);

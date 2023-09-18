@@ -2,8 +2,14 @@ export default function deleteList(listName){
     console.log('deleteList called with: ' + listName);
     var categoriesStr = localStorage.getItem('listCategories');
     var listCategories = JSON.parse(categoriesStr);
+    var keyToDelete = Object.keys(listCategories).find(key => listCategories[key] === listName);
+    if(keyToDelete === null || keyToDelete === undefined || keyToDelete === ''){
+        console.log(`list with name ${listName} not found.`);
+        return;
+    }
     clearItemsInList(listName, listCategories);
-    delete listCategories[listName];
+    
+    delete listCategories[keyToDelete];
     categoriesStr = JSON.stringify(listCategories);
     localStorage.setItem('listCategories', categoriesStr);
 }

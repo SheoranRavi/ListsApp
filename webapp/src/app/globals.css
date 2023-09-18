@@ -53,4 +53,12 @@ body {
   .nav-bar-item{
     @apply flex shrink-0 p-2 bg-slate-200 rounded-lg cursor-pointer mt-1 ml-1 mr-1 text-gray-500 shadow-md shadow-gray-600 select-none
   }
+
+  .popup-base{
+    @apply fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] p-5 max-h-fit max-w-fit bg-slate-200 rounded-lg shadow shadow-slate-400 shadow-lg z-50
+  }
+
+  .text-input-base{
+    @apply flex px-2 py-2 rounded-md border focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1
+  }
 }

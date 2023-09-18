@@ -1,4 +1,4 @@
-export default function ListDeleteEditPopup(props) {
+export default function ListDeletePopup(props) {
 	const { listName, deleteList, cancelDelete } = props;
 
 	const handleDelete = () => {

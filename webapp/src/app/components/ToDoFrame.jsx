@@ -15,7 +15,7 @@ export default function ToDoFrame(){
     console.log('re-rendering ToDoFrame');
 
     const [filterState, setFilter] = useState(toDoStates.active);
-    const [currentCategory, setCategory] = useState(listCategories.default);
+    const [currentCategory, setCategory] = useState('');
     const [stateFilteredItems, setStateFilteredItems] = useState([]);
 
     const handleToDoItemsUpdate = () => {

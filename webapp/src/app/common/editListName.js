@@ -13,6 +13,8 @@ export default function editListName(listNewName, listOldName){
     allItems.forEach(element => {
         if(element.category === listOldName)
             element.category = listNewName;
+        if(listOldName === 'Default' && element.category === undefined)
+            element.category = listNewName;
     });
 
     localStorage.setItem('toDosList', JSON.stringify(allItems));

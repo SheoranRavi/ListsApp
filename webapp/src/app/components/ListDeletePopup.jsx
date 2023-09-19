@@ -2,7 +2,7 @@ export default function ListDeletePopup(props) {
 	const { listName, deleteList, cancelDelete } = props;
 
 	const handleDelete = () => {
-		deleteList(listName);
+		deleteList();
 	};
 
 	return (

@@ -29,8 +29,7 @@ export default function Navbar(props) {
 	const [newListName, setNewListName] = useState("");
 	const [showAddList, setShowAddList] = useState(false);
 
-	const currentCategory = props.currentCategory;
-	const setCategory = props.setCategory;
+	const {currentCategory, setCategory} = props;
 
 	const onSelect = (e) => {
 		console.log(`nav bar item selected`);
@@ -54,6 +53,12 @@ export default function Navbar(props) {
 		}
         let cat = extractCategories();
         setCategories(cat);
+	}
+
+	const handleListNameChange = (newName) => {
+		let cat = extractCategories();
+		setCategories(cat);
+		setCategory(newName);
 	}
 
 	const addCategory = (e) => {
@@ -104,6 +109,7 @@ export default function Navbar(props) {
 								onSelect={onSelect}
 								currentCategory={currentCategory}
 								onDeleteListSetDefault={onDeleteListSetDefault}
+								handleListNameChange={handleListNameChange}
 							></NavBarItem>
 						);
 					})}

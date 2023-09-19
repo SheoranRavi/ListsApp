@@ -1,21 +1,21 @@
 import React, { useRef, useState } from "react";
-import ListDeletePopup from "./ListDeletePopup";
 import deleteList from "../common/deleteList";
+import EditDeleteDecide from "./EditDeleteDecide";
 
 export default function NavBarItem(props){
-    const [showDeletePopup, setShowDeletePopup] = useState(false);
-    const {name, onSelect, currentCategory, onDeleteListSetDefault} = props;
+    const [showEditDeletePopup, setShowEditDeletePopup] = useState(false);
+    const {name, onSelect, currentCategory, onDeleteListSetDefault, handleListNameChange} = props;
     const timeoutIdRef = useRef(0);
 
     const handleHold = (e) => {
         timeoutIdRef.current = setTimeout(() => {
-            setShowDeletePopup(true);
+            setShowEditDeletePopup(true);
         }, 1000);
     }
 
     const handleListDelete = (listName) => {
         deleteList(listName);
-        setShowDeletePopup(false);
+        setShowEditDeletePopup(false);
         onDeleteListSetDefault();
     }
 
@@ -23,8 +23,8 @@ export default function NavBarItem(props){
         clearTimeout(timeoutIdRef.current);
     }
 
-    const cancelDelete = (e) => {
-        setShowDeletePopup(false);
+    const hideEditDeletePopup = (e) => {
+        setShowEditDeletePopup(false);
     }
 
     return (
@@ -40,11 +40,12 @@ export default function NavBarItem(props){
                 {name}
             </div>
             {
-                showDeletePopup &&
-                <ListDeletePopup 
+                showEditDeletePopup &&
+                <EditDeleteDecide 
                     listName={name}
                     deleteList={handleListDelete}
-                    cancelDelete={cancelDelete}    
+                    hideEditDeletePopup={hideEditDeletePopup}
+                    handleListNameChange={handleListNameChange}  
                 />
             }
         </>

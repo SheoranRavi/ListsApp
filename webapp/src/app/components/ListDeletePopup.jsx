@@ -8,7 +8,7 @@ export default function ListDeletePopup(props) {
 	return (
 		<div
 			className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]
-            p-5 w-10/12 lg:max-w-fit max-h-fit
+            p-5 w-10/12 max-h-fit min-w-fit
             bg-cyan-400 rounded-md z-50 bg-opacity-90 shadow shadow-gray-700 shadow-md"
 		>
 				<div className="block text-center">

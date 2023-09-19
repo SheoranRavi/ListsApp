@@ -19,13 +19,14 @@ export default function EditDeleteDecide(props){
 
     return(
         <>
-            <div className="popup-base text-center">
+            <div className="popup-base text-center min-w-fit">
+                <button className="nav-bar-item inline mb-2 shadow-sm border border-neutral-300 border-2">{listName}</button>
                 <div className="flex space-x-4">
-                    <button className="btn"
+                    <button className="btn min-w-fit shadow-none"
                         onClick={() => setShowEditPopup(true)}>
                         Edit List Name
                     </button>
-                    <button className="btn"
+                    <button className="btn min-w-fit shadow-none"
                         onClick={() => setShowDeletePopup(true)}>
                         Delete List
                     </button>

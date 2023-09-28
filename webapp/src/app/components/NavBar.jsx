@@ -6,6 +6,8 @@ import NavBarItem from "./NavBarItem";
 import storeCategories from "../common/storeCategories";
 import getListCategories from "../common/getListCategories";
 import AddNewList from "./AddNewList";
+import getLastCategory from "../common/getlastCategory";
+import setLastCategory from "../common/setLastCategory";
 
 export default function Navbar(props) {
     //const listCategories = getListCategories();
@@ -37,20 +39,37 @@ export default function Navbar(props) {
 		console.log(currentCategory);
 		var nextCategory = e.target.id;
 		if (nextCategory !== currentCategory && nextCategory) {
-			setCategory(nextCategory);
+			handleSetCategory(nextCategory);
 		}
 	};
 
+	const handleSetCategory = (category) => {
+		setCategory(category);
+		setLastCategory(category);
+	}
+
     const onDeleteListSetDefault = () => {
-        setFirstAsDefault();
+        setFirstOrLastAsDefault();
     }
 
-	const setFirstAsDefault = () => {
-		var categories = getListCategories();
-		for(var prop in categories){
-			setCategory(categories[prop]);
-			break;
+	const setLastAsActive = useCallback((categories) => {
+		var values = Object.keys(categories).map((key) => categories[key]);
+		var lastCat = getLastCategory();
+		if(lastCat !== '' && lastCat !== undefined && values.includes(lastCat)){
+			setCategory(lastCat);
+			return true;
 		}
+		return false;
+	}, [setCategory])
+
+	const setFirstOrLastAsDefault = () => {
+		var categories = getListCategories();
+		var res = setLastAsActive(categories);
+		if(!res)
+			for(var prop in categories){
+				setCategory(categories[prop]);
+				break;
+			}
         let cat = extractCategories();
         setCategories(cat);
 	}
@@ -58,7 +77,7 @@ export default function Navbar(props) {
 	const handleListNameChange = (newName) => {
 		let cat = extractCategories();
 		setCategories(cat);
-		setCategory(newName);
+		handleSetCategory(newName);
 	}
 
 	const addCategory = (e) => {
@@ -77,7 +96,7 @@ export default function Navbar(props) {
 		listCategoriesRef.current[newList] = newList;
         storeCategories(listCategoriesRef.current);
 		setCategories(extractCategories);
-        setCategory(newList);
+        handleSetCategory(newList);
 		setShowAddList(false);
 	};
 
@@ -93,9 +112,18 @@ export default function Navbar(props) {
     useEffect(() => {
         var cats = extractCategories();
         setCategories(cats);
-		if(cats.length > 0)
-			setCategory(cats[0].name);
-    }, [extractCategories, setCategory])
+		if(cats.length > 0){
+			var categories = getListCategories();
+			var res = setLastAsActive(categories);
+			if(!res)
+				setCategory(cats[0].name);
+		}
+    }, [extractCategories, setCategory, setLastAsActive])
+
+	// useEffect(() => {
+	// 	var categories = getListCategories();
+	// 	var res = setLastAsActive(categories);
+	// }, [setLastAsActive])
 
 	return (
 		<>

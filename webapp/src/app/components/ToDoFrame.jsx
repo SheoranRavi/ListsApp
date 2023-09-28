@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 import filterItemsByState from '../common/filterItemsByState';
 import toDoStates from '../common/toDoStates';
 import getItemsByCategory from '../common/getItemsByCategory';
-import listCategories from '../common/listCategories';
 import Navbar from './NavBar';
 
 export default function ToDoFrame(){

@@ -35,8 +35,7 @@ export default function Navbar(props) {
 
 	const onSelect = (e) => {
 		console.log(`nav bar item selected`);
-		console.log(e.target.id);
-		console.log(currentCategory);
+		
 		var nextCategory = e.target.id;
 		if (nextCategory !== currentCategory && nextCategory) {
 			handleSetCategory(nextCategory);
@@ -108,7 +107,7 @@ export default function Navbar(props) {
 	const handleAddListClose = () => {
 		setShowAddList(false);
 	}
-
+	console.log('Rendering NavBar component');
     useEffect(() => {
         var cats = extractCategories();
         setCategories(cats);
@@ -119,11 +118,6 @@ export default function Navbar(props) {
 				setCategory(cats[0].name);
 		}
     }, [extractCategories, setCategory, setLastAsActive])
-
-	// useEffect(() => {
-	// 	var categories = getListCategories();
-	// 	var res = setLastAsActive(categories);
-	// }, [setLastAsActive])
 
 	return (
 		<>

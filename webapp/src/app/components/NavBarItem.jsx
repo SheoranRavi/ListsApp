@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import deleteList from "../common/deleteList";
 import EditDeleteDecide from "./EditDeleteDecide";
 
@@ -26,6 +26,19 @@ export default function NavBarItem(props){
     const hideEditDeletePopup = (e) => {
         setShowEditDeletePopup(false);
     }
+
+	useEffect(() => {
+		try {
+			let e = document.getElementById(currentCategory);
+			e.scrollIntoView({
+				behavior: 'smooth',
+				block: 'center',
+				inline: 'center'
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}, [currentCategory])
 
     return (
         <>
